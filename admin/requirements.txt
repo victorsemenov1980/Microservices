@@ -1,0 +1,12 @@
+asgiref==3.3.1
+Django==3.1.5
+django-cors-headers==3.6.0
+django-filter==2.4.0
+django-mysql==3.10.0
+djangorestframework==3.12.2
+djangorestframework-jwt
+Markdown==3.3.3
+mysqlclient==2.0.3
+pika==1.1.0
+pytz==2020.5
+sqlparse==0.4.1
