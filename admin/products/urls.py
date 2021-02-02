@@ -17,7 +17,7 @@ Including another URLconf
 """
 
 from django.urls import path
-from .views import ProductViewSet, UserAPIView
+from .views import ProductViewSet
 from . import views
 
 urlpatterns = [
@@ -28,6 +28,5 @@ urlpatterns = [
         'get':'retrieve',
         'put':'update',
         'delete':'destroy'})),
-    path('user',UserAPIView.as_view()),
    
 ]

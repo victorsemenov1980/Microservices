@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 import pika,json
 from main import Product, db
+import requests
+
 
 params=pika.URLParameters('amqps://kgeiibqf:tFDehiYv1Rgctu3l7J4sh8pjEExaxNbS@owl.rmq.cloudamqp.com/kgeiibqf')
 
@@ -11,7 +13,7 @@ channel = connection.channel()
 channel.queue_declare(queue='main')
 
 def callback(ch,method,properties,body):
-    print('Received in admin')
+    print('Received in main')
     data=json.loads(body)
     print(data)
     
@@ -27,6 +29,11 @@ def callback(ch,method,properties,body):
         product.image=data['image']
         db.session.commit()
         print('Product changed')
+    
+    elif properties.content_type=='product list requested':
+        
+        requests.get('http://docker.for.mac.localhost:8001/api/products')
+        print('Product list sent')
     
     elif properties.content_type=='product deleted':
         product=Product.query.get(data)

@@ -16,12 +16,16 @@ channel.queue_declare(queue='admin')
 
 def callback(ch,method,properties,body):
     print('Received in admin')
-    id=json.loads(body)
-    print(id)
-    product=Product.objects.get(id=id)
-    product.choices=product.choices+1
-    product.save()
-    print('Product chosen count increased')
+    data=json.loads(body)
+    '''
+    Here we got to publish data to Redis
+    '''
+    if properties.content_type=='product list sent':
+        
+        print('Product list published')
+    
+    return data
+    
 
 channel.basic_consume(queue='admin',on_message_callback=callback,auto_ack=True)
 

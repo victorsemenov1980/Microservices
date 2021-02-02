@@ -6,5 +6,5 @@ save_non_project_files = False
 
 [main]
 version = 0.2.0
-recent_files = ['products/views.py', 'products/producer.py', 'consumer.py']
+recent_files = ['products/views.py', 'consumer.py', 'products/producer.py']
 
