@@ -4,7 +4,7 @@ from main import Product, db
 import requests
 
 
-params=pika.URLParameters('amqps://kgeiibqf:tFDehiYv1Rgctu3l7J4sh8pjEExaxNbS@owl.rmq.cloudamqp.com/kgeiibqf')
+params=pika.URLParameters('')
 
 connection = pika.BlockingConnection(params)
 
